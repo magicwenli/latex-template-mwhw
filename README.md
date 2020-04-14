@@ -2,9 +2,9 @@
 
 ## 说明
 
-基于 [fphw Assignment](http://www.latextemplates.com/template/fphw-assignment) 修改
+基于 [fphw Assignment](http://www.latextemplates.com/template/fphw-assignment) 演绎
 
-请使用XeLaTex编译
+请使用 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/XeTeX_Logo.svg/400px-XeTeX_Logo.svg.png) 编译
 
 ## 图片
 
@@ -25,7 +25,7 @@
 ```latex
 \IDnumber{21xxxxxx}
 ```
-- 修改`\section`样式为`\tcolorbox`
+- 修改`\section`样式
 
 ## License
 
