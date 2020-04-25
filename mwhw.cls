@@ -22,8 +22,8 @@
 % % Enhanced datetime
 % % compile with XeLatex
 
-% \usepackage{datetime} %datetime
-% \renewcommand{\today}{\number\year 赛 \number\month 软 \number\day }
+\usepackage{datetime} %datetime
+\renewcommand{\today}{ \number\year 年 \number\month 月 \number\day 日}
 
 %%% Preliminary declarations:
 %%%% These are some commands where we declare new commands for the class
@@ -36,6 +36,8 @@
 \newcommand{\institute}[1]{ \newcommand{\instituteloc}{#1} }
 % We define the macro for the ID of you
 \newcommand{\IDnumber}[1]{ \newcommand{\IDnumberloc}{#1} }
+% We define the macro for the classID of you
+\newcommand{\classID}[1]{ \newcommand{\classIDloc}{#1} }
 
 %these are auxiliary definitions used in the title section
 \newcommand{\CourseLang}{Course}
@@ -43,6 +45,7 @@
 \newcommand{\StudentLang}{Student name}
 \newcommand{\ProfessorLang}{Professor}
 \newcommand{\IDnumberLang}{ID}
+\newcommand{\classIDLang}{classID}
 
 % Header and footers, we will use the titles also
 \RequirePackage{fancyhdr}
@@ -74,6 +77,7 @@
     \renewcommand{\DateLang}{日期}
     \renewcommand{\StudentLang}{姓名}
     \renewcommand{\IDnumberLang}{学号}
+    \renewcommand{\classIDLang}{班级}
 }
 
 
@@ -127,13 +131,14 @@
         \vspace{10pt}
         {\LARGE \bfseries \@title} \\[5pt]
         \StudentLang: {\itshape \@author}
-        \ifx\IDnumberloc\undefined{}\else-- \IDnumberLang: {\itshape \IDnumberloc{}}\fi
+        \ifx\classIDloc\undefined{}\else \quad \classIDLang: {\itshape \classIDloc{}}\fi
+        \ifx\IDnumberloc\undefined{}\else \quad \IDnumberLang: {\itshape \IDnumberloc{}}\fi
         \vspace{8pt}
         \hrule
         \vspace{10pt}
-        \ifx\classlocal\undefined{}\else\CourseLang: {\itshape \classlocal{} \ifx\professorloc\undefined{}\else{-- }\fi  }\fi
+        \ifx\classlocal\undefined{}\else\CourseLang: {\itshape \classlocal{} \ifx\professorloc\undefined{}\else{\quad}\fi  }\fi
         \ifx\professorloc\undefined{}\else{\ProfessorLang: {\itshape\professorloc}}\fi 
-        \ifx\classlocal\undefined{}\else{ -- }\fi
+        \ifx\classlocal\undefined{}\else{\quad}\fi
         \DateLang: {\itshape\@date}
         \vspace{15pt}
     \end{center}
