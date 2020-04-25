@@ -6,7 +6,7 @@
 
 ## 图片
 
-[预览](github.com/magicwenli/latex-template-mwhw/main.pdf)
+[预览](https://github.com/magicwenli/latex-template-mwhw/blob/master/main.pdf)
 
 ![](./src/figure1.png)
 
