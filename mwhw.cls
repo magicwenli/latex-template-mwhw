@@ -35,7 +35,8 @@
 \RequirePackage{fontspec}
 \RequirePackage{xcolor}
 \RequirePackage{datetime} %datetime
-
+\RequirePackage{multirow}
+\RequirePackage{booktabs}
 
 \DeclareOption{color}{}
 \DeclareOption{parskip}{
