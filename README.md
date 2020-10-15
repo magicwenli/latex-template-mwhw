@@ -4,21 +4,16 @@
 
 基于 [fphw Assignment](http://www.latextemplates.com/template/fphw-assignment) 演绎, **请使用 XeLaTeX 编译**
 
-## 图片
+## 预览
 
 [预览](https://github.com/magicwenli/latex-template-mwhw/blob/master/main.pdf)
 
-![](./src/figure1.png)
+## 更新
 
-![](src/figure2.png)
+V 1.2
 
-![](./src/figure3.png)
-
-![](./src/figure4.png)
-
-
-
-## 变化
+- 改进代码样式
+- 一些代码优化
 
 V 1.1:
 

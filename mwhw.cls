@@ -13,17 +13,131 @@
 
 %%% Identification
 
-\NeedsTeXFormat{LaTeX2e} % we need to have LaTeX2e for this to compile
-\ProvidesClass{mwhw}[2020/04/12] % mwshw is the name we need to provide to 
-                                  % the documentclass command on the .tex file
+\NeedsTeXFormat{LaTeX2e} 
+\ProvidesClass{mwhw}[2020/10/15] 
+\typeout{The template provided by magicwenli}
+\LoadClass[12pt]{article}
+\newif\if@decoration
+\newif\if@opensource
+\newif\if@sourcefont
+
+
+\RequirePackage{amsmath}
+\RequirePackage{unicode-math}
+\RequirePackage{tikz}
+\usetikzlibrary{calc,backgrounds}
+\RequirePackage{tcolorbox,tabu}
+\RequirePackage{lastpage}
+\RequirePackage{enumerate}
+\RequirePackage{pifont}
+\RequirePackage{appendix}
+\RequirePackage{longtable}
+\RequirePackage{fontspec}
+\RequirePackage{xcolor}
+\RequirePackage{datetime} %datetime
+
+
+\DeclareOption{color}{}
+\DeclareOption{parskip}{
+  \setlength\parskip{0.2\baselineskip}}
+\DeclareOption{decoration}{\@decorationtrue}
+\DeclareOption{opensource}{\@opensourcetrue}
+\DeclareOption{sourcefont}{\@sourcefonttrue}
+\newtoks\subtitle
+
+% 设置纸张类型与大小
+\DeclareOption{a4paper}{
+  \setlength\paperheight{297mm}%
+  \setlength\paperwidth{210mm}}
+\DeclareOption{b5paper}{
+  \setlength\paperheight{250mm}%
+  \setlength\paperwidth{176mm}}
+ 
+% 字体
+\ProcessOptions
+\if@sourcefont
+  \RequirePackage[SlantFont]{xeCJK}
+  \RequirePackage[heading]{ctex}
+  \setCJKmainfont{思源宋体 CN}
+  \setCJKsansfont{思源黑体 CN}
+\else
+  \RequirePackage[heading]{ctex}
+\fi
+%\setmainfont{Cambria}       % 目前默认使用的serif字体
+\setsansfont{Calibri}       % 目前默认使用的sans-serif字体
+%\setmonofont{Courier New}   % 目前默认使用的等宽字体
+\setmathfont{Cambria Math}  % 与正文字体相适应的数学字体
+
+\renewcommand{\thefootnote}{\textbf{(\arabic{footnote})}}
+
+% 设置图片格式
+\RequirePackage{graphicx}
+\graphicspath{{./figure/}{./pic/}{./image}}
+\setlength{\textfloatsep}{6pt plus 2pt minus 4pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+
+% 设置表格
+\RequirePackage{longtable}
+\tcbuselibrary{listings,theorems,skins}
+
+% 页边距
+\RequirePackage{geometry}
+\geometry{margin=1in}
+
+% 引用高亮
+\RequirePackage{hyperref}
+\hypersetup{
+  breaklinks,
+  unicode,
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  pdfborder={0 0 0},
+  linktocpage,
+  pageanchor=true
+}
+   
+% codes
+\usepackage{listings}
+\colorlet{mygray}{black!30}
+\colorlet{mygreen}{green!60!blue}
+\colorlet{mymauve}{red!60!blue}
+
+\lstset{
+  language=c, 
+%  backgroundcolor=\color{gray!3},  
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  breakatwhitespace=false,      
+  breaklines=true,                
+  captionpos=b,                    
+  commentstyle=\color{mygreen}, 
+  extendedchars=true,              
+%  frame=single,                   
+  keepspaces=true,             
+  keywordstyle=\color{blue},                      
+  numbers=none,                
+  numbersep=5pt,                   
+  numberstyle=\tiny\color{black}, 
+  rulecolor=\color{mygray},        
+  showspaces=false,               
+  showtabs=false,                 
+  stepnumber=5,                  
+  stringstyle=\color{mymauve},    
+  tabsize=4,                      
+  title=\lstname                
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % % Enhanced datetime
 % % compile with XeLatex
 
-\usepackage{datetime} %datetime
 \renewcommand{\today}{ \number\year 年 \number\month 月 \number\day 日}
+
+
+
 
 %%% Preliminary declarations:
 %%%% These are some commands where we declare new commands for the class
@@ -93,9 +207,6 @@
 %%%% Here we do more declarations and call other files
 
 
-% we need to load 
-\LoadClass{article}
-
 
 % we will modify sections, subsections and sub subsections
 \RequirePackage{titlesec}
@@ -143,9 +254,6 @@
         \vspace{15pt}
     \end{center}
 }
-
-% definition of the "problem" environment
-\usepackage[most]{tcolorbox}
 
 \newsavebox{\problembox}
 \newenvironment{problem}
