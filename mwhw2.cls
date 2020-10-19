@@ -11,10 +11,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% 
+
 %%% Identification
 
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{mwhw}[2020/10/15] 
+\ProvidesClass{mwhw}[2020/10/15 version 1.1] 
 \typeout{The template provided by magicwenli}
 \LoadClass[12pt]{article}
 \newif\if@decoration
@@ -28,6 +30,7 @@
 \RequirePackage{tikz}
 \usetikzlibrary{calc,backgrounds}
 \RequirePackage{tcolorbox,tabu}
+\tcbuselibrary{most}
 \RequirePackage{lastpage}
 \RequirePackage{enumerate}
 \RequirePackage{pifont}
@@ -46,6 +49,9 @@
 \DeclareOption{opensource}{\@opensourcetrue}
 \DeclareOption{sourcefont}{\@sourcefonttrue}
 \newtoks\subtitle
+
+% 列表
+
 
 % 设置纸张类型与大小
 \DeclareOption{a4paper}{
@@ -131,6 +137,7 @@
 }
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % % Enhanced datetime
@@ -213,13 +220,11 @@
 % we will modify sections, subsections and sub subsections
 \RequirePackage{titlesec}
 % Modification of section 
-\titleformat{\section}[block]{\normalsize\bfseries}{\thesection.}{.3cm}{} 
+\titleformat{\section}[hang]{\centering\large\bfseries}{\thesection.}{.2cm}{} 
 
 % modification of subsection and sub sub section
-\titleformat{\subsection}[runin]{\bfseries}{ \thesubsection.}
-{1mm}{}[:\quad]
-\titleformat{\subsubsection}[runin]{\bfseries\itshape}{ \thesubsubsection.}
-{1mm}{}[:\quad]
+\titleformat{\subsection}[hang]{\bfseries}{\thesubsection.}{1mm}{}
+\titleformat{\subsubsection}[hang]{\bfseries\itshape}{ \thesubsubsection.}{1mm}{}
 
 % Geometry lets us modify the sizes of the document nicely
 \RequirePackage{geometry}
@@ -253,14 +258,15 @@
         \ifx\professorloc\undefined{}\else{\ProfessorLang: {\itshape\professorloc}}\fi 
         \ifx\classlocal\undefined{}\else{\quad}\fi
         \DateLang: {\itshape\@date}
-        \vspace{15pt}
+        \vspace{5pt}
     \end{center}
 }
 
-\newsavebox{\problembox}
-\newenvironment{problem}
-    {\begin{center} \begin{minipage}{.98\textwidth}\begin{tcolorbox}[enhanced]}
-    {\end{tcolorbox}\end{minipage} \end{center} }
+\newtcolorbox{problem}[2][]{coltitle=red!70!black, title={#2.},fonttitle=\bfseries,detach title,before upper={\tcbtitle\quad},breakable,#1}
+%\newsavebox{\problembox}
+%\newenvironment{problem}
+%    {\begin{center} \begin{minipage}{.98\textwidth}\begin{tcolorbox}[enhanced]}
+%    {\end{tcolorbox}\end{minipage} \end{center} }
 
 %%% We finish the class with this command
 \endinput
